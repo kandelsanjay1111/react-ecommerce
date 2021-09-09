@@ -10,6 +10,8 @@
 
 ### Below is screenshot of project
 
-![ecommerce](https://github.com/kandelsanjay1111/react-ecommerce/blob/main/public/img/ecommerce.png)
+1. Product Listings
+![ecommerce](https://github.com/kandelsanjay1111/react-ecommerce/blob/main/public/img/ecommerce.PNG)
 
-![screenshot](https://github.com/kandelsanjay1111/react-ecommerce/blob/main/public/img/ecommerce1.png)
+2. Product Detail
+![screenshot](https://github.com/kandelsanjay1111/react-ecommerce/blob/main/public/img/ecommerce1.PNG)
