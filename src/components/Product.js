@@ -1,34 +1,45 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import {ButtonContainer} from './Button';
+import {ProductConsumer} from '../ProductContext';
+// import {ButtonContainer} from './Button';
 
 export default class Product extends React.Component {
 
 	render() {
-		const {title,img,price,inCart}=this.props.product;
+		const {id,title,img,price,inCart}=this.props.product;
 		return (
 			<ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
-				<div className="card">
-					<div className="img-container p-5">
-					<Link to="details">
-					<img src={img} alt="product" className="card-img-top" />
-					</Link>
-					<button onClick={()=>console.log('add to cart')} className="cart-btn" disabled={inCart ? true : false}>
-					{
-						inCart?<p className="text-capitalize mb-0" disabled>In Cart</p>
-						:<i className="fas fa-cart-plus"></i>
-					}
-					</button>
-					</div>
+			<ProductConsumer>
+			{
+				(data)=>{
+					return(
+						<div className="card">
+							<div className="img-container p-5" onClick={()=>data.getProduct(id)}>
+							<Link to="details">
+							<img src={img} alt="product" className="card-img-top" />
+							</Link>
+							<button onClick={()=>console.log('add to cart')} className="cart-btn" disabled={inCart ? true : false}>
+							{
+								inCart?<p className="text-capitalize mb-0" disabled>In Cart</p>
+								:<i className="fas fa-cart-plus"></i>
+							}
+							</button>
+							</div>
 
-					<div className="card-footer d-flex justify-content-between">
-					<p className="align-self-center mb-0">{title}</p>
-					<h5 className="text-blue font-italic mb-0">
-					<span className="mr-1">$</span>{price}
-					</h5>
-					</div>
-				</div>
+							<div className="card-footer d-flex justify-content-between">
+							<p className="align-self-center mb-0">{title}</p>
+							<h5 className="text-blue font-italic mb-0">
+							<span className="mr-1">$</span>{price}
+							</h5>
+							</div>
+						</div>
+						)
+				}
+			}
+
+			</ProductConsumer>
+				
 			</ProductWrapper>
 		);
 	}
@@ -79,7 +90,8 @@ const ProductWrapper=styled.div`
 	transform:translate(0,0);
 }
 .cart-btn:hover{
-
+	color:var(--mainBlue);
+	cursor:pointer;
 }
 `;
 
